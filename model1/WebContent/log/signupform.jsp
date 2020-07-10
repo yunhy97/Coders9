@@ -23,8 +23,8 @@
 		</div>
 		<div class="row mt-3">
 			<div class="col-12 d-flex justify-content-center">
-				<form method="post" action="/log/signup.jsp">
-					<div class="card border-info mb-3 p-2"  style="width: 500px;">
+				<form method="post" action="signup.jsp">
+					<div class="card border-info mb-3 p-2" style="width: 500px;">
 					  <div class="card-body text-info">
 					    <h5 class="card-title">SIGN UP</h5>
 					    <p class="card-text">Please enter the information.</p>
@@ -85,5 +85,8 @@
 		</div>
 	</div>
 </div>
+<script type="text/javascript">
+	
+</script>
 </body>
 </html>

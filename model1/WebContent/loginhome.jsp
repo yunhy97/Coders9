@@ -23,7 +23,7 @@
 		</div>
 		<div class="row mt-3">
 			<div class="col-12 d-flex justify-content-center">
-				<form method="post" action="/log/login.jsp">
+				<form method="post" action="log/login.jsp">
 					<div class="card border-info mb-3 p-2"  style="width: 500px;">
 					  <div class="card-body text-info">
 					    <h5 class="card-title">LOGIN</h5>
@@ -38,7 +38,7 @@
 						</div>
 						<div class="text-right mt-4">
 							<button type="submit" class="btn btn-info btn-block">SIGN IN</button>
-							<a class="btn btn-secondary btn-block" href="signupform.jsp">SIGN UP</a>
+							<a class="btn btn-secondary btn-block" href="log/signupform.jsp">SIGN UP</a>
 						</div>
 					  </div>
 					</div>
