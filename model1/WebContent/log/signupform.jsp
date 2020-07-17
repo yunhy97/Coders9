@@ -58,11 +58,11 @@
 							%>
 						</div>
 						<div class="form-group">
-							<label for="user-pwd">Password</label>
+							<label for="pwd">Password</label>
 							<input type="password" class="form-control" name="userpwd" id="pwd" onchange="isSame()" onclick="pwdInfoBox()" onsubmit="checkField(event)"  onkeyup="pwdcorrect()"/>
 						</div>
 						<div class="form-group">
-							<label for="user-pwd-confirm">Password confirm</label>
+							<label for="pwdconfirm">Password confirm</label>
 							<input type="password" class="form-control" name="userpwdconfirm" id="pwdconfirm" onchange="isSame()" onclick="pwdInfoBox()" onsubmit="checkField(event)"/>
 							<div id="same"></div>
 							

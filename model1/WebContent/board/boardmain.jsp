@@ -3,6 +3,7 @@
 <%@page import="com.model1.dao.BoardDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<!-- 로그인체크 -->
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -14,20 +15,10 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
 </head>
-<style type="text/css">
-	#board1-table:hover tbody tr:hover{
-	    
-	    color: white;
-	    background-color: #17a2b8;
-	}
-	thead {
-		background-color: white;
-		color: #17a2b8;
-		opacity: 0.8;
-   	 	filter: alpha(opacity=40); /* For IE8 and earlier */
-	}
-</style>
-<body class="bg-dark text-white">
+<body>
+<%
+	String position = "board";
+%>
 <%@include file="../common/nav.jsp" %>
 <%
 	BoardDao boardDao = new BoardDao();
@@ -36,16 +27,16 @@
 <div class="container">	
 	<div class="row">
 		<div class="col-12">
-			<div class="jumbotron" style="background:none;">
-			  <h1 class="display-4 text-info font-weight-bold">Coders9</h1>
-			  <p class="lead">This is a free board using model1. Feel free to enter and post.</p>
+			<div class="jumbotron mt-4 bg-white" style="height: 200px;">
+			  <h1 class="display-4 text-dark font-weight-bold">Coders9</h1>
+			  <p class="lead text-dark">This is a free board using model1. Feel free to enter and post.</p>
 			</div>
 		</div>
 	</div>
 	
 	<div class="row">
 		<div class="col-12">
-			<table class="table table-hover text-white" id="board1-table" >
+			<table class="table table-hover table-striped" id="board1-table" >
 			  <thead>
 			    <tr>
 			      <th scope="col">No</th>
@@ -61,7 +52,7 @@
 			  	%>
 			    <tr>
 			      <th scope="row"><%=board.getNo() %></th>
-			      <td><a href="#" class="text-white"><%=board.getTitle() %></a></td>
+			      <td><a href="/model1/board/detail.jsp?boardno=<%=board.getNo() %>" class="text-info font-weight-bold"><%=board.getTitle() %></a></td>
 			      <td><%=board.getUserId() %></td>
 			      <td><%=board.getHit() %></td>
 			      <td><%=board.getRegisteredDate() %></td>
@@ -76,7 +67,7 @@
 	<div class="row">
 		<div class="col-12">
 			<div class="text-right">
-				<a class="btn btn-info" href="#" role="button">Write</a>
+				<a class="btn btn-dark" href="/model1/board/write.jsp" role="button">Write</a>
 			</div>
 		</div>
 	</div>

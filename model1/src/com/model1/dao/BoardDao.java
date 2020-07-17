@@ -32,4 +32,26 @@ public class BoardDao {
 		connection.close();
 		return boards;
 	}
+	
+	public BoardDto getDetailByNo(int boardNo) throws SQLException {
+		BoardDto boardDto = null;
+		Connection connection = ConnectionUtil.getConnection();
+		PreparedStatement pstmt = connection.prepareStatement(QueryUtil.getSQL("board.getDetailByNo"));
+		pstmt.setInt(1, boardNo);
+		ResultSet rs = pstmt.executeQuery();
+		while(rs.next()) {
+			boardDto = new BoardDto();
+			boardDto.setNo(rs.getInt("board_no"));
+			boardDto.setUserId(rs.getString("user_id"));
+			boardDto.setHit(rs.getInt("board_hit"));
+			boardDto.setType(rs.getString("board_type"));
+			boardDto.setTitle(rs.getString("board_title"));
+			boardDto.setContent(rs.getString("board_content"));
+			boardDto.setRegisteredDate(rs.getDate("board_registerd_date"));
+		}
+		rs.close();
+		pstmt.close();
+		connection.close();
+		return boardDto;
+	}
 }

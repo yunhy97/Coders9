@@ -11,6 +11,7 @@
 			<url-pattern>/log/*</url-pattern>
 			<url-pattern>/board/*</url-pattern>
 			<url-pattern>/reply/*</url-pattern>
+			<url-pattern>/user/*</url-pattern>
 			<include-prelude>/common/session.jsp</include-prelude>
 		</jsp-property-group>
 	</jsp-config>

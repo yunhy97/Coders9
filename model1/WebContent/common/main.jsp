@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<!-- 로그인체크 -->
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -23,18 +24,21 @@
   </style>
 </head>
 
-<body class="bg-dark text-white">
+<body>
+<%
+	String position = "home";
+%>
 <%@include file="../common/nav.jsp" %>
 <div class="container">	
 	<div class="row">
 		<div class="col-12">
-			<div class="jumbotron" style="background:none;">
+			<div class="jumbotron mt-4">
 			  <h1 class="display-4 text-info font-weight-bold">Coders9</h1>
-			  <p style="text-align: center;"><img alt="게시판" src="/model1/resources/img/board.jpg" width="100%"></p>
-			  <p class="lead">This is a free board using model1. Feel free to enter and post.</p>
-			  <hr class="my-4" style="background-color: white;">
+			  <p style="text-align: center;"><a href="/model1/board/write.jsp"><img alt="게시판" src="/model1/resources/img/commu.png" width="300px"></a></p>
+			  <p class="lead">This is a free board using model1. Feel free to enter and post. <br/>Click the photo above to go to the writing screen.</p>
+			  <hr class="my-1">
 			  <p>Click the button below to go to the board list screen</p>
-			  <a class="btn btn-info btn-lg" href="/model1/board/boardmain.jsp" role="button">Board</a>
+			  <a class="btn btn-dark btn-lg" href="/model1/board/boardmain.jsp" role="button">Board</a>
 			</div>
 		</div>
 	</div>
