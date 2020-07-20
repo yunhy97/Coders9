@@ -1,3 +1,5 @@
+<%@page import="com.model1.vo.User"%>
+<%@page import="com.model1.dao.UserDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -25,6 +27,13 @@
 			</div>
 		</div>
 	</div>
+	
+	<%
+		UserDao userDao = new UserDao();
+		User user = userDao.getUserByNo(loginUserNo);
+		String error = request.getParameter("error");	
+	%>
+	
 	<div class="row">
 		<div class="col-12 mt-0">
 			<form method="post" action="writereg.jsp">
@@ -32,28 +41,44 @@
 				  
 				  <div class="card-body text-dark">
 					    
+					    <%
+							if("empty".equals(error)) {
+						%>
+						<div class="alert alert-danger">
+							<strong>오류!</strong> 정보를 선택 또는 입력하세요.
+						</div>
+						<%
+							}
+						%>
+					    
 					    <div class="form-group">
 							<label for="userId" class="font-weight-bold">ID</label>
-							<p class="form-control" >id</p>
+							<input type="text" class="form-control" name="userid" id="userId" value=<%=user.getId() %> disabled/>
 						</div>
 						
 						<div class="form-group">
-							<label for="user-pwd" class="font-weight-bold">Type</label>
-							<input type="password" class="form-control" name="userpwd" id="pwd" onchange="isSame()" onclick="pwdInfoBox()" onsubmit="checkField(event)"  onkeyup="pwdcorrect()"/>
+							<label for="boardType" class="font-weight-bold">Type</label>
+
+							<select class="custom-select mr-sm-2" name="boardtype" id="boardType">
+					        	<option selected>select</option>
+					        	<option value="출석">출석</option>
+					        	<option value="질문">질문</option>
+					        	<option value="공부">공부</option>
+					        	<option value="기타">기타</option>
+					      	</select>
+						
 						</div>
 						<div class="form-group">
-							<label for="user-pwd-confirm" class="font-weight-bold">Title</label>
-							<input type="password" class="form-control" name="userpwdconfirm" id="pwdconfirm" onchange="isSame()" onclick="pwdInfoBox()" onsubmit="checkField(event)"/>
-							<div id="same"></div>
-							
+							<label for="boardTitle" class="font-weight-bold">Title</label>
+							<input type="text" class="form-control" name="boardtitle" id="boardTitle"/>
 						</div>
 						<div class="form-group">
-							<label for="user-email" class="font-weight-bold">Content</label>
-							<textarea class="form-control" rows="5" cols="40" name="summary"></textarea>
+							<label for="boardContent" class="font-weight-bold">Content</label>
+							<textarea class="form-control" rows="5" cols="40" name="summary" id="boardContent"></textarea>
 						</div>
 						
 						<div class="text-right mt-4">
-							<button type="submit" class="btn btn-dark btn-lg">COMPLETED</button>
+							<button type="submit" class="btn btn-dark btn-lg" onclick="alertcomplete(event)">COMPLETED</button>
 						</div>
 					  </div>
 				</div>
@@ -61,5 +86,14 @@
 		</div>
 	</div>
 </div>
+<script type="text/javascript">
+function alertcomplete(event) {
+	if(confirm('등록하시겠습니까?')){
+	
+	} else {
+		event.preventDefault();
+	}
+}
+</script>
 </body>
 </html>

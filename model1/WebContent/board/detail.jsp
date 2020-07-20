@@ -1,3 +1,8 @@
+<%@page import="com.model1.dto.ReplyDto"%>
+<%@page import="com.model1.dao.ReplyDao"%>
+<%@page import="java.util.List"%>
+<%@page import="com.model1.vo.User"%>
+<%@page import="com.model1.dao.UserDao"%>
 <%@page import="com.model1.dto.BoardDto"%>
 <%@page import="com.model1.dao.BoardDao"%>
 <%@page import="com.model1.util.NumberUtil"%>
@@ -28,6 +33,7 @@
 				BoardDto boardDto = boardDao.getDetailByNo(boardNo);
 			%>
 			<h1 class="text-info">Detail</h1>
+			
 			<table class="table" style="width: 100%;">
 				<tbody>
 					<tr>
@@ -56,15 +62,16 @@
 					</tr>
 				</tbody>
 			</table>
-			<div class="row">
-				<div class="col-12 text-right mt-0">
-					<!-- board 삭제 미완 -->
-					<a href="#" class="btn btn-danger btn-sm">Delete</a>
-				</div>
-			</div>
+			
 			<hr class="my-3" style="background-color: black;"/>
 			
 			<!-- reply show 시작 미완 -->
+		  	<%
+		  		UserDao userDao = new UserDao();
+		  		User user = userDao.getUserByNo(loginUserNo);
+				ReplyDao replyDao = new ReplyDao();
+				List<ReplyDto> replys =  replyDao.getReplyByBoardNo(boardNo);
+			%>
 			<div class="row">
 				<div class="col-12 mt-3">
 					<h1 class="text-info">Reply</h1>
@@ -74,18 +81,24 @@
 						<button class="btn btn-info btn-sm" onclick="addBtn()">Add</button>
 					</div>
 					<table class="table" style="width: 100%;">
+						<%
+							for(ReplyDto dto : replys) {
+						%>
 						<tbody>
 							<tr>
 								<th>Id</th>
-								<td></td>
+								<td><%=dto.getUserId() %></td>
 								<th>Date</th>
-								<td></td>
+								<td><%=dto.getRegisteredDate() %></td>
 							</tr>
 							<tr>
 								<th>Content</th>
-								<td colspan="3"></td>
+								<td colspan="3"><%=dto.getContent() %></td>
 							</tr>
 						</tbody>
+						<%
+							}
+						%>
 					</table>
 					
 					<!-- reply add 시작 미완 -->
@@ -96,19 +109,25 @@
 							  <span aria-hidden="true">&times;</span>
 							</button>
 						</div>
-						<form>
+						<!-- <input type="hidden" value=<%=boardDto.getNo() %> name="boardnum"/>-->
+						<form method="post" action="replyreg.jsp">
 							<table class="table" style="width: 100%;">
 								<tbody>
 									<tr>
 										<th>Id</th>
-										<td></td>
+										<td><%=user.getId() %></td>
 									</tr>
 									<tr>
 										<th>Comment</th>
-										<td colspan="3"><textarea class="form-control" rows="3" cols="40"></textarea></td>
+										<td colspan="3"><textarea class="form-control" rows="3" cols="40" name="replycomment"></textarea></td>
 									</tr>
 								</tbody>
 							</table>
+							<div class="row">
+								<div class="col-12 text-right mt-0 mb-3">
+									<button type="submit" class="btn btn-dark btn-sm">Create</button>
+								</div>
+							</div>
 						</form>
 					</div>
 					

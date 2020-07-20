@@ -60,4 +60,44 @@ public class UserDao {
 		
 		return user;
 	}
+	
+	public User getUserByNo(int userNo) throws SQLException {
+		User user = null;
+		Connection connection = ConnectionUtil.getConnection();
+		PreparedStatement pstmt = connection.prepareStatement(QueryUtil.getSQL("user.getUserByNo"));
+		pstmt.setInt(1, userNo);
+		ResultSet rs = pstmt.executeQuery();
+		while(rs.next()) {
+			user = new User();
+			user.setNo(rs.getInt("user_no"));
+			user.setId(rs.getString("user_id"));
+			user.setName(rs.getString("user_name"));
+			user.setPassword(rs.getString("user_password"));
+			user.setEmail(rs.getString("user_email"));
+			user.setGender(rs.getString("user_gender"));
+			user.setTel(rs.getString("user_tel"));
+			user.setCreateDate(rs.getDate("user_create_date"));
+		}
+		rs.close();
+		pstmt.close();
+		connection.close();
+		
+		return user;
+	}
+	
+	public void updateModifyUser(User user) throws SQLException {
+		Connection connection = ConnectionUtil.getConnection();
+		PreparedStatement pstmt = connection.prepareStatement(QueryUtil.getSQL("user.updateUser"));
+		pstmt.setString(1, user.getId());
+		pstmt.setString(2, user.getName());
+		pstmt.setString(3, user.getPassword());
+		pstmt.setString(4, user.getEmail());
+		pstmt.setString(5, user.getGender());
+		pstmt.setString(6, user.getTel());
+		pstmt.setInt(7, user.getNo());
+		pstmt.executeUpdate();
+		
+		pstmt.close();
+		connection.close();
+	}
 }
