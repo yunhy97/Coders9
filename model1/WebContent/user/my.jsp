@@ -6,7 +6,7 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <title></title>
+  <title>Coders9</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
@@ -77,11 +77,11 @@
 						
 						<div class="form-group">
 							<label for="user-email">Email</label>
-							<input type="email" class="form-control" name="useremail" id="user-email" onsubmit="checkField(event)"/>
+							<input type="email" class="form-control" name="useremail" id="user-email" value=<%=user.getEmail()%> onsubmit="checkField(event)"/>
 						</div>
 						<div class="form-group">
 							<label for="user-tel">Phone Number</label>
-							<input type="tel" class="form-control" name="usertel" id="user-tel" maxlength="13" onsubmit="checkField(event)" />
+							<input type="tel" class="form-control" name="usertel" id="user-tel" value=<%=user.getTel()%> maxlength="13" onsubmit="checkField(event)" />
 						</div>
 						<div class="text-right mt-4">
 							<button type="submit" class="btn btn-dark btn-lg btn-block" onclick="alertcomplete(event)" >MODIFY ACCOUNT</button>

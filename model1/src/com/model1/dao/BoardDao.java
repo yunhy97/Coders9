@@ -94,5 +94,17 @@ public class BoardDao {
 		connection.close();
 	}
 	
-	
+	public void updateBoardHit(int boardNo) throws SQLException {
+		
+		
+		Connection connection = ConnectionUtil.getConnection();
+		PreparedStatement pstmt = connection.prepareStatement(QueryUtil.getSQL("board.updateBoardHit"));
+		pstmt.setInt(1, boardNo);
+		
+		pstmt.executeUpdate();
+		
+		pstmt.close();
+		connection.close();
+		
+	}
 }

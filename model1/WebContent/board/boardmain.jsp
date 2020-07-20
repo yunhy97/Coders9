@@ -71,7 +71,7 @@
 			  	%>
 			    <tr>
 			      <td scope="row"><%=index++ %></td>
-			      <td><a href="/model1/board/detail.jsp?boardno=<%=board.getNo() %>" class="text-info font-weight-bold"><%=board.getTitle() %></a></td>
+			      <td><a href="/model1/board/hit.jsp?boardno=<%=board.getNo() %>&page=<%=pageNo %>" class="text-info font-weight-bold"><%=board.getTitle() %></a></td>
 			      <td><%=board.getUserId() %></td>
 			      <td><%=board.getHit() %></td>
 			      <td><%=board.getRegisteredDate() %></td>

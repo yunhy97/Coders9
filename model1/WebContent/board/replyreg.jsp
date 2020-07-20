@@ -5,8 +5,10 @@
     pageEncoding="UTF-8"%>
 <%
 	request.setCharacterEncoding("utf-8");
-	int boardNo = NumberUtil.stringToInt(request.getParameter("boardnum"));
+	int boardNo = NumberUtil.stringToInt(request.getParameter("boardno"));
 	String comment = request.getParameter("replycomment");
+	
+	
 	
 	Reply reply = new Reply();
 	reply.setBoardNo(boardNo);
@@ -21,5 +23,5 @@
 	ReplyDao replyDao = new ReplyDao();
 	replyDao.insertReply(reply);
 	
-	response.sendRedirect("detail.jsp");
+	response.sendRedirect("detail.jsp?boardno="+boardNo);
 %>

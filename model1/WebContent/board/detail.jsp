@@ -11,7 +11,7 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <title></title>
+  <title>Coders9</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
@@ -109,10 +109,11 @@
 							  <span aria-hidden="true">&times;</span>
 							</button>
 						</div>
-						<!-- <input type="hidden" value=<%=boardDto.getNo() %> name="boardnum"/>-->
 						<form method="post" action="replyreg.jsp">
+							<input type="hidden" name="boardno" value="<%=boardNo %>" />
 							<table class="table" style="width: 100%;">
 								<tbody>
+									
 									<tr>
 										<th>Id</th>
 										<td><%=user.getId() %></td>
